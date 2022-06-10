@@ -1,0 +1,57 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-row id="header">
+      <ion-icon name="arrow-back" (click)="closeModel()"></ion-icon>
+      <ion-title>Añadir Obras </ion-title>
+    </ion-row>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div>
+    <form (ngSubmit)="alta()" [formGroup]="datosObra" id="content">
+      <ion-item color="primary"  class="field">
+        <ion-input type="text" placeholder="Nombre de la Obra" formControlName="name"></ion-input>
+        <ion-note slot="error" *ngIf="getName().invalid && (getName().dirty || getName().touched)">
+          <ion-note  color="danger" *ngIf="getName().errors.required">
+            Se necesita el nombre
+          </ion-note>
+          <ion-note  color="danger" *ngIf="getName().errors.pattern">
+            El nombre solo puede contener letras
+          </ion-note>
+        </ion-note>
+      </ion-item>
+
+      <ion-item color="primary"  class="field">
+        <ion-note slot="start">Longitud*</ion-note>
+        <ion-input type="text" formControlName="longitud" value="{{longitude}}"></ion-input>
+        <ion-note slot="error" *ngIf="getLongitud().invalid && (getLongitud().dirty || getLongitud().touched)">
+          <ion-note  color="danger" *ngIf="getLongitud().errors.required">
+            Se requiere de una Longitud
+          </ion-note>
+          <ion-note  color="danger" *ngIf="getLongitud().errors.pattern">
+            Solo se permiten caracteres numéricos
+          </ion-note>
+        </ion-note>
+      </ion-item>
+
+      <ion-item color="primary"  class="field">
+        <ion-note slot="start">Latitud*</ion-note>
+        <ion-input type="text" formControlName="latitud" value="{{latitude}}"></ion-input>
+        <ion-note slot="error" *ngIf="getLatitud().invalid && (getLatitud().dirty || getLatitud().touched)">
+          <ion-note  color="danger" *ngIf="getLatitud().errors.required">
+            Se requiere de una Latitud
+          </ion-note>
+          <ion-note  color="danger" *ngIf="getLatitud().errors.pattern">
+            Solo se permiten caracteres numéricos
+          </ion-note>
+        </ion-note>
+      </ion-item>
+
+      <ion-button (click)="getCurrentCoordinates()">Obtener Localizacion</ion-button>
+
+      <ion-button type="submit" expand="block" [disabled]="!datosObra.valid" color="tertiary">Dar de alta</ion-button>
+    </form>
+  </div>
+
+</ion-content>

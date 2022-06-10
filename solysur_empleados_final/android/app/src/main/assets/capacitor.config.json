@@ -1,0 +1,6 @@
+{
+	"appId": "io.ionic.starter",
+	"appName": "SolySur",
+	"webDir": "www",
+	"bundledWebRuntime": false
+}

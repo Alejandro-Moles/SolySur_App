@@ -1,0 +1,35 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-row>
+      <ion-title>
+        Obras
+      </ion-title>
+    </ion-row>
+    <ion-icon slot="end" name="log-out-outline" (click)="logOut()"></ion-icon>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <div id="content" *ngFor="let obras of arrayObras; index as position">
+    <ion-card>
+      <ion-item color="primary">
+        <img class="imagen" src="assets/edificios.png">
+        <ion-label class="titulo">Datos Obras</ion-label>
+      </ion-item>
+
+      <ion-card-content>
+        <ion-item>
+          <ion-icon name="business-sharp" slot="start"></ion-icon>
+          <ion-label class="subtitulo">{{obras.obraName}}</ion-label>
+        </ion-item>
+      </ion-card-content>
+    </ion-card>
+  </div>
+
+  <ion-fab vertical="bottom" horizontal="center" slot="fixed">
+    <ion-fab-button (click)="presentModal()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>

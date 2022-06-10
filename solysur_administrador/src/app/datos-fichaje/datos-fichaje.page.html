@@ -1,0 +1,88 @@
+<ion-header no-border>
+  <ion-toolbar>
+    <ion-row id="header">
+      <ion-icon name="arrow-back" (click)="closeModel()"></ion-icon>
+      <ion-title>Datos del Fichaje</ion-title>
+    </ion-row>
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-item color="primary">
+      <ion-icon slot="start" name="newspaper"></ion-icon>
+      <ion-label>Datos Personales</ion-label>
+    </ion-item>
+
+    <ion-card-content>
+      <ion-item>
+        <ion-label>Nombre: </ion-label>
+        <ion-label>{{parametros.data.fichaje.fichajeNombre}}</ion-label>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Dni: </ion-label>
+        <ion-label>{{parametros.data.fichaje.fichajeDni}}</ion-label>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Ocupación: </ion-label>
+        <ion-label>{{parametros.data.fichaje.fichajeTrabajo}}</ion-label>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Obra: </ion-label>
+        <ion-label>{{parametros.data.fichaje.fichajeObra}}</ion-label>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-item color="primary">
+      <ion-icon slot="start" name="log-in"></ion-icon>
+      <ion-label>Datos de Entrada</ion-label>
+    </ion-item>
+
+    <ion-card-content>
+      <ion-item>
+        <ion-label>Hora Entrada: </ion-label>
+        <ion-label>{{parametros.data.fichaje.fichajeHoraEntrada}}</ion-label>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Localización: </ion-label>
+        <ion-label>{{parametros.data.fichaje.fichajeEstadoEntrada}}</ion-label>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Motivo: </ion-label>
+        <ion-label>{{parametros.data.fichaje.fichajeMotivoEntrada}}</ion-label>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-item color="primary">
+      <ion-icon slot="start" name="log-out"></ion-icon>
+      <ion-label>Datos de Salida</ion-label>
+    </ion-item>
+
+    <ion-card-content>
+      <ion-item>
+        <ion-label>Hora Salida: </ion-label>
+        <ion-label>{{parametros.data.fichaje.fichajeHoraSalida}}</ion-label>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Localización: </ion-label>
+        <ion-label>{{parametros.data.fichaje.fichajeEstadoSalida}}</ion-label>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Motivo: </ion-label>
+        <ion-label>{{parametros.data.fichaje.fichajeMotivoSalida}}</ion-label>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

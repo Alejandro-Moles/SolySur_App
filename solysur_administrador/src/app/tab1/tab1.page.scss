@@ -1,0 +1,34 @@
+ion-header{
+  ion-title{
+
+  }
+  ion-icon{
+    font-size: 40px;
+  }
+
+  .wiffi{
+    padding: 7%;
+  }
+}
+
+ion-content{
+  --ion-background-color: #ffffff;
+  #content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    #img {
+      width: 100%;
+      height: 100%;
+      padding: 10px;
+    }
+    #titulo {
+      font-size: 35px;
+      color: white;
+      font-family: Dialog;
+      font-weight: bold;
+    }
+  }
+
+}

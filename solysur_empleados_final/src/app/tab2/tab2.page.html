@@ -1,0 +1,77 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Fichajes</ion-title>
+    <ion-icon slot="end" name="log-out-outline" (click)="logOut()"></ion-icon>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div id="header">
+    <ion-avatar>
+      <img src="assets/solysur_logo.png">
+    </ion-avatar>
+  </div>
+
+  <div id="content">
+    <ion-card>
+      <ion-item color="primary">
+        <ion-icon name="newspaper" slot="start"></ion-icon>
+        <ion-label id="titulo">Datos Usuario</ion-label>
+      </ion-item>
+
+      <ion-card-content>
+        <ion-item>
+          <ion-icon name="accessibility" slot="start"></ion-icon>
+          <ion-label>{{nombreEmpleado}}</ion-label>
+        </ion-item>
+
+        <ion-item>
+          <ion-icon name="mail" slot="start"></ion-icon>
+          <ion-label>{{correoEmpleado}}</ion-label>
+        </ion-item>
+
+        <ion-item>
+          <ion-icon name="ribbon" slot="start"></ion-icon>
+          <ion-label>{{categoriaEmpleado}}</ion-label>
+        </ion-item>
+
+        <ion-item>
+          <ion-icon name="hammer" slot="start"></ion-icon>
+          <ion-label>{{trabajoEmpleado}}</ion-label>
+        </ion-item>
+
+      </ion-card-content>
+    </ion-card>
+
+    <form (ngSubmit)="fichaje()" [formGroup]="formulario">
+      <ion-item color="primary" class="selector">
+        <ion-select placeholder="Nombre de la Obra" formControlName="nombreObra" *ngIf="!fichajeAbierto" >
+          <ion-select-option *ngFor="let obra of datosObras" [value]="obra">
+            {{obra.obraName}}
+          </ion-select-option>
+        </ion-select>
+
+        <ion-label *ngIf="fichajeAbierto">{{textoObra}}</ion-label>
+        <ion-note slot="error" *ngIf="fichajeAbierto">Tienes que cerrar el fichaje en esta obra</ion-note>
+      </ion-item>
+
+      <ion-item color="primary" class="field" >
+        <ion-label>¿Estas en la Obra?</ion-label>
+        <ion-checkbox (ionChange)="checkLocalizacion()" checked="true"></ion-checkbox>
+      </ion-item>
+
+      <ion-item color="primary" class="selector" *ngIf="!comprobarLocalizacion">
+        <ion-select placeholder="Motivo" formControlName="nombreMotivo">
+          <ion-select-option *ngFor="let motivo of datosMotivos" [value]="motivo">
+            {{motivo.nombreMotivo}}
+          </ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-button *ngIf="!fichajeAbierto" type="submit" expand="block" [disabled]="!formulario.valid" color="tertiary">Entrar</ion-button>
+      <ion-button *ngIf="fichajeAbierto" (click)="fichaje()" expand="block" color="tertiary">Salir</ion-button>
+    </form>
+  </div>
+
+
+</ion-content>

@@ -1,0 +1,34 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-row>
+      <ion-title>
+        Motivos
+      </ion-title>
+    </ion-row>
+    <ion-icon slot="end" name="log-out-outline" (click)="logOut()"></ion-icon>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+    <div id="content" *ngFor="let motivos of arrayMotivos; index as position" (click)="showActionSheet(motivos)">
+      <ion-card>
+        <ion-item color="primary">
+          <img class="imagen" src="assets/ausencia.png">
+          <ion-label class="titulo">Ausencia</ion-label>
+        </ion-item>
+
+        <ion-card-content>
+          <ion-item>
+            <ion-icon name="newspaper" slot="start"></ion-icon>
+            <ion-label class="subtitulo">{{motivos.nombreMotivo}}</ion-label>
+          </ion-item>
+        </ion-card-content>
+      </ion-card>
+    </div>
+
+    <ion-fab vertical="bottom" horizontal="center" slot="fixed">
+      <ion-fab-button (click)="mostrarInputMotivosInsertar()">
+        <ion-icon name="add"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
+</ion-content>

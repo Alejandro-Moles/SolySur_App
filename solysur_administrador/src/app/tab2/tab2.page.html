@@ -1,0 +1,42 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-row>
+      <ion-title>
+        Empleados
+      </ion-title>
+    </ion-row>
+    <ion-icon slot="end" name="log-out-outline" (click)="logOut()"></ion-icon>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <div id="content" *ngFor="let empleado of arrayEmpleados; index as position" (click)="showActionSheet(empleado)">
+    <ion-card>
+      <ion-item color="primary">
+        <img class="imagen" src="assets/usuario.png">
+        <ion-label class="titulo">{{empleado.userName}}</ion-label>
+      </ion-item>
+
+      <ion-card-content>
+        <ion-item>
+          <ion-icon name="mail" slot="start"></ion-icon>
+          <ion-label class="subtitulo">{{empleado.userEmail}}</ion-label>
+        </ion-item>
+
+        <ion-item>
+          <ion-icon name="hammer" slot="start"></ion-icon>
+          <ion-label class="subtitulo">{{empleado.userTrabajo}}</ion-label>
+        </ion-item>
+      </ion-card-content>
+    </ion-card>
+  </div>
+
+
+    <ion-fab vertical="bottom" horizontal="center" slot="fixed">
+      <ion-fab-button (click)="presentModal()">
+        <ion-icon name="person-add"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
+
+</ion-content>

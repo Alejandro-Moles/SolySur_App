@@ -1,0 +1,34 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-row>
+      <ion-title>
+        Trabajos
+      </ion-title>
+    </ion-row>
+    <ion-icon slot="end" name="log-out-outline" (click)="logOut()"></ion-icon>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <div id="content" *ngFor="let trabajos of arrayTrabajos" (click)="showActionSheet(trabajos)">
+      <ion-card>
+        <ion-item color="primary">
+          <img class="imagen" src="assets/empleado.png">
+          <ion-label class="titulo">Ocupación</ion-label>
+        </ion-item>
+
+        <ion-card-content>
+          <ion-item>
+            <ion-icon name="hammer" slot="start"></ion-icon>
+            <ion-label class="subtitulo">{{trabajos.nombreTrabajo}}</ion-label>
+          </ion-item>
+        </ion-card-content>
+      </ion-card>
+    </div>
+
+    <ion-fab vertical="bottom" horizontal="center" slot="fixed">
+      <ion-fab-button (click)="mostrarInputTrabajoInsertar()">
+        <ion-icon name="add"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
+</ion-content>

@@ -1,0 +1,18 @@
+<ion-header no-border>
+  <ion-toolbar>
+    <ion-row id="header">
+      <ion-icon name="arrow-back" (click)="closeModel()"></ion-icon>
+      <ion-title>Fichajes</ion-title>
+    </ion-row>
+  </ion-toolbar>
+
+  <ion-searchbar animated="true" (ionChange)="buscar($event)"></ion-searchbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item *ngFor="let fichajes of datosFichajes | filtro: textoBusqueda" (click)="abrirDatosFichajes(fichajes)">
+        {{fichajes.fichajeIdentificador}}
+    </ion-item>
+  </ion-list>
+</ion-content>

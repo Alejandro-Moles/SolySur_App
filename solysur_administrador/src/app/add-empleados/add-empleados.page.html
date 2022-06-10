@@ -1,0 +1,72 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-row id="header">
+      <ion-icon name="arrow-back" (click)="closeModel()"></ion-icon>
+      <ion-title>Añadir Empleados</ion-title>
+    </ion-row>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form (ngSubmit)="alta()" [formGroup]="datosEmpleado" id="content">
+    <ion-item color="primary"  class="field">
+      <ion-input type="text" placeholder="Nombre Completo" formControlName="name"></ion-input>
+      <ion-note slot="error" *ngIf="getName().invalid && (getName().dirty || getName().touched)">
+        <ion-note  color="danger" *ngIf="getName().errors.required">
+          Se necesita el nombre
+        </ion-note>
+        <ion-note  color="danger" *ngIf="getName().errors.pattern">
+          El nombre solo puede contener letras
+        </ion-note>
+      </ion-note>
+    </ion-item>
+
+    <ion-item color="primary"  class="field">
+      <ion-input type="text" placeholder="Dni" formControlName="dni"></ion-input>
+      <ion-note slot="error" *ngIf="getDni().invalid && (getDni().dirty || getDni().touched)">
+        <ion-note  color="danger" *ngIf="getDni().errors.required">
+          Se necesita el dni
+        </ion-note>
+        <ion-note  color="danger" *ngIf="getDni().errors.dniValidation || getDni().errors.pattern">
+          {{getDni().errors.dniValidation.message}}
+        </ion-note>
+      </ion-note>
+    </ion-item>
+
+    <ion-item color="primary"  class="field">
+      <ion-input type="email" placeholder="Email" formControlName="email"></ion-input>
+      <ion-icon *ngIf="(getemail().dirty || getemail().touched) && getemail().errors" name="close-circle-outline" slot="end" color="danger"></ion-icon>
+      <ion-icon *ngIf="(!getemail().errors)" name="checkmark-circle-outline" slot="end" color="success" ></ion-icon>
+      <ion-note slot="error" *ngIf="(getemail().dirty || getemail().touched) && getemail().errors">El email no es valido</ion-note>
+    </ion-item>
+
+    <ion-item color="primary" class="field">
+      <ion-input placeholder="Contraseña" formControlName="password" [type]="showPass ? 'text': 'password'"></ion-input>
+      <ion-icon slot="end" [name]="passIcon" (click)="togglePass()"></ion-icon>
+
+      <ion-note slot="error" *ngIf="getpassword().invalid && (getpassword().dirty || getpassword().touched)">
+        <ion-note  color="danger" *ngIf="getpassword().errors.required">
+          Se requiere contraseña
+        </ion-note>
+        <ion-note  color="danger" *ngIf="getpassword().errors.passwordValidation">
+          {{getpassword().errors.passwordValidation.message}}
+        </ion-note>
+      </ion-note>
+    </ion-item>
+
+    <ion-item color="primary" class="field">
+      <ion-select placeholder="Puesto de Trabajo" formControlName="trabajo">
+        <ion-select-option *ngFor="let trabajo of datosTrabajo" [value]="trabajo">
+          {{trabajo.nombreTrabajo}}
+        </ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item color="primary" class="field">
+      <ion-label>Administrador</ion-label>
+      <ion-checkbox (ionChange)="checkCategoria()" checked="true"></ion-checkbox>
+    </ion-item>
+
+    <ion-button type="submit" expand="block" [disabled]="!datosEmpleado.valid" color="tertiary">Dar de alta</ion-button>
+  </form>
+</ion-content>

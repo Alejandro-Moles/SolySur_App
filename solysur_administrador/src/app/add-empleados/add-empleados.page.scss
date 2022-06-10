@@ -1,0 +1,51 @@
+#header{
+
+  ion-icon{
+    margin-left: 2%;
+    font-size: 30px;
+    margin-right: 15%;
+  }
+
+  .wiffi{
+    padding: 7%;
+  }
+}
+
+#content{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .field{
+    width: 80%;
+    border: solid;
+    border-radius: 8px;
+    margin-top: 10%;
+  }
+
+  ion-input{
+    height: 60px;
+    font-size: 18px;
+  }
+
+  ion-icon{
+    font-size: 33px;
+  }
+
+  ion-note{
+    font-size: 18px;
+  }
+
+  ion-button{
+    width: 80%;
+    height: 60px;
+    font-size: 20px;
+    margin-top: 15%;
+    border-radius: initial;
+  }
+
+  ion-select{
+    height: 60px;
+    font-size: 20px;
+  }
+}

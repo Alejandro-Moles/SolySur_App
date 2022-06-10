@@ -1,0 +1,37 @@
+
+  <ion-content>
+    <div id="header">
+      <img src="assets/solysur_logo.png">
+      <h1>Iniciar Sesion</h1>
+    </div>
+
+    <div>
+      <form (ngSubmit)="login()" [formGroup]="credentials" id="content">
+
+        <ion-item color="primary"  class="field">
+          <ion-input type="email" placeholder="Email" formControlName="email"></ion-input>
+          <ion-icon *ngIf="(getemail().dirty || getemail().touched) && getemail().errors" name="close-circle-outline" slot="end" color="danger"></ion-icon>
+          <ion-icon *ngIf="(!getemail().errors)" name="checkmark-circle-outline" slot="end" color="success" ></ion-icon>
+          <ion-note slot="error" *ngIf="(getemail().dirty || getemail().touched) && getemail().errors">El email no es valido</ion-note>
+        </ion-item>
+
+        <ion-item color="primary" class="field">
+          <ion-input placeholder="Contraseña" formControlName="password" [type]="showPass ? 'text': 'password'"></ion-input>
+          <ion-icon slot="end" [name]="passIcon" (click)="togglePass()"></ion-icon>
+
+          <ion-note slot="error" *ngIf="getpassword().invalid && (getpassword().dirty || getpassword().touched)">
+            <ion-note  color="danger" *ngIf="getpassword().errors.required">
+              Se requiere contraseña
+            </ion-note>
+            <ion-note  color="danger" *ngIf="getpassword().errors.passwordValidation">
+              {{getpassword().errors.passwordValidation.message}}
+            </ion-note>
+          </ion-note>
+        </ion-item>
+
+        <ion-button type="submit" expand="block" [disabled]="!credentials.valid" color="tertiary">Iniciar Sesión</ion-button>
+
+      </form>
+    </div>
+  </ion-content>
+
